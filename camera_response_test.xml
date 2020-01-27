@@ -1,0 +1,7 @@
+<library path="lib/libcamera_response_test">
+  <class name="camera_response_test/CameraResponseTestNodelet" type="camera_response_test::CameraResponseTestNodelet" base_class_type="nodelet::Nodelet">
+    <description> 
+        Nodelet for doing tests on a camera's response time.
+    </description>
+  </class>
+</library>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<launch>
+  <node pkg="nodelet" type="nodelet" name="camera_response_test_nodelet_manager" args="manager" output="screen" respawn="true">
+      <param name="num_worker_threads" value="1" />
+  </node>
+
+  <include file="$(find spinnaker_sdk_camera_driver)/launch/acquisition.launch">
+    <arg name="nodelet_manager_name" value="camera_response_test_nodelet_manager"/> 
+    <arg name="config_file" value="$(find bluerov_controller)/param/camera_calibration_720_540_barbados_ocean.yaml"/>
+    <arg name="start_nodelet_manager" value="false"/>
+    <arg name="color" value="false"/>
+    <arg name="binning" value="2"/>
+    <arg name="soft_framerate" value="40"/>
+  </include>
+
+  <node pkg="nodelet" type="nodelet" name="camera_response_test" output="screen" args="load camera_response_test/CameraResponseTestNodelet camera_response_test_nodelet_manager" respawn="false"/>
+</launch>
